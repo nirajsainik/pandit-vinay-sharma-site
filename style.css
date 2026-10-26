@@ -450,3 +450,10 @@ html,body{overflow-x:hidden}
 .slides{grid-template-columns:minmax(0,1fr)}.slide{min-width:0}
 .slide .mandala{max-width:none}
 @media(max-width:600px){.callbar{font-size:1rem;gap:10px}.nameplate{margin-left:14px;margin-right:14px}.stxt p{padding:0 8px}}
+.portrait.emblem{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;color:#fff;padding:24px;border:1px solid var(--gold-l);box-shadow:0 0 15px #c9c9c95e;background:radial-gradient(circle at 50% 35%,#7d0010,#250241 75%)}
+.portrait.emblem img{position:relative;width:72%;height:auto;object-fit:contain;filter:drop-shadow(0 0 22px rgba(255,202,76,.45));animation:float 6s ease-in-out infinite}
+.portrait.emblem .ring{position:absolute;top:50%;left:50%;width:88%;aspect-ratio:1;translate:-50% -62%;border:2px dashed var(--gold-l);border-radius:50%;display:grid;place-items:end center;font-size:2.2rem;color:var(--gold-l);opacity:.45;animation:spin 50s linear infinite}
+.portrait.emblem b{position:relative;font:600 1.25rem 'Oswald',sans-serif;color:var(--gold-l)}
+.portrait.emblem small{position:relative;color:#f0dcd0;letter-spacing:.08em;text-transform:uppercase;font-size:.72rem}
+.portrait.emblem .ring{place-items:start center;padding-top:4px}
+.portrait.emblem b{margin-top:22px}
