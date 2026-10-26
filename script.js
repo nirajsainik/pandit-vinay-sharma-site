@@ -26,10 +26,28 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
+    (function initSlider() {
+      var slides = document.querySelectorAll('.slide'), dots = document.querySelectorAll('.sdots button');
+      if (slides.length < 2) return;
+      var i = 0, timer = null, box = document.querySelector('.slider');
+      function go(n) {
+        slides[i].classList.remove('on'); dots[i].classList.remove('on');
+        i = (n + slides.length) % slides.length;
+        slides[i].classList.add('on'); dots[i].classList.add('on');
+      }
+      function play() { if (!reduce) { clearInterval(timer); timer = setInterval(function () { go(i + 1); }, 6500); } }
+      dots.forEach(function (d, n) { d.addEventListener('click', function () { go(n); play(); }); });
+      document.querySelector('.sarrow.prev').addEventListener('click', function () { go(i - 1); play(); });
+      document.querySelector('.sarrow.next').addEventListener('click', function () { go(i + 1); play(); });
+      box.addEventListener('mouseenter', function () { clearInterval(timer); });
+      box.addEventListener('mouseleave', play);
+      play();
+    })();
+
     if (reduce || !('IntersectionObserver' in window)) return;
 
     // Scroll reveal with automatic stagger inside grids
-    document.querySelectorAll('.grid, .awards, .facts').forEach(function (g) {
+    document.querySelectorAll('.grid, .awards, .facts, .main-services, .ser-grid, .testi-grid, .pills').forEach(function (g) {
       Array.prototype.forEach.call(g.children, function (c, i) {
         c.classList.add('reveal');
         c.style.setProperty('--d', Math.min(i, 8) * 80 + 'ms');
