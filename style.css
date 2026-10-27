@@ -489,3 +489,23 @@ html,body{overflow-x:hidden}
 @media(max-width:700px){.page-logo{width:200px}.brand-logo{height:56px}}
 @media(prefers-reduced-motion:reduce){.splash{display:none!important}}
 .brand .brand-logo{height:74px;width:auto}@media(max-width:700px){.brand .brand-logo{height:56px}}
+
+/* ===== v4: icons and stats ===== */
+.brand .brand-logo{height:84px}
+.ms .ico img{width:56%;height:auto}
+.arch span img{width:92px;height:92px}
+.hi{width:28px;height:28px;vertical-align:-6px;margin-right:4px}
+.ci{display:inline-block;vertical-align:-4px}
+.callpill .ci{width:18px;height:18px;vertical-align:-3px}
+.cta-card-link .ci{width:16px;height:16px;vertical-align:-3px;margin-right:2px}
+.cta-card a .ci{width:30px;height:30px;vertical-align:-5px;margin-right:6px}
+.callbar .wai .ci,.call-part i .ci{width:26px;height:26px;vertical-align:middle}
+.btn-dark .ci{width:18px;height:18px;vertical-align:-3px;margin-right:4px}
+.stats{background:linear-gradient(to right,#1e0142,#920000,#1e0142);padding:34px 0;border-bottom:3px solid var(--gold-l)}
+.statrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;text-align:center}
+.stat{display:flex;flex-direction:column;align-items:center;gap:2px;color:#fff;position:relative}
+.stat+.stat::before{content:"";position:absolute;left:-10px;top:12%;height:76%;width:1px;background:linear-gradient(transparent,var(--gold-l),transparent)}
+.stat .si{width:44px;height:44px;margin-bottom:4px}
+.stat b{font:700 clamp(2.2rem,5vw,3.2rem)/1.05 'Oswald',sans-serif;background:linear-gradient(#fff,#ffca4c);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 0 #3d0000)}
+.stat span{font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:.85rem;color:#ffe9b0}
+@media(max-width:700px){.stat+.stat::before{display:none}.brand .brand-logo{height:60px}}

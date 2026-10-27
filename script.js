@@ -78,7 +78,7 @@
         c.style.setProperty('--d', Math.min(i, 8) * 80 + 'ms');
       });
     });
-    document.querySelectorAll('section h2, section .sub, .about > *, .report, .note, .band .wrap > *, .prose .svc')
+    document.querySelectorAll('section h2, section .sub, .about > *, .report, .note, .band .wrap > *, .prose .svc, .statrow')
       .forEach(function (el) { el.classList.add('reveal'); });
 
     var io = new IntersectionObserver(function (entries) {
@@ -86,7 +86,7 @@
         if (!e.isIntersecting) return;
         e.target.classList.add('in');
         io.unobserve(e.target);
-        if (e.target.classList.contains('facts')) countUp(e.target);
+        if (e.target.classList.contains('facts') || e.target.classList.contains('statrow')) countUp(e.target);
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
@@ -97,7 +97,7 @@
         function step(t) {
           if (t0 === null) t0 = t;
           var p = Math.min((t - t0) / 1400, 1), eased = 1 - Math.pow(1 - p, 3);
-          b.textContent = Math.round(end * eased) + suffix;
+          b.textContent = Math.round(end * eased).toLocaleString('en-US') + suffix;
           if (p < 1) requestAnimationFrame(step);
         }
         requestAnimationFrame(step);
