@@ -4,7 +4,32 @@
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!reduce) root.classList.add('js');
 
+  // Landing splash: home page only, once per browser session
+  var seen = false;
+  try { seen = sessionStorage.getItem('splashSeen') === '1'; } catch (e) {}
+  var path = location.pathname;
+  var onHome = !/\/blog\//.test(path) && /(\/|index\.html)$/.test(path);
+  if (!reduce && !seen && onHome) root.classList.add('splash-on');
+
   document.addEventListener('DOMContentLoaded', function () {
+    var sp = document.getElementById('splash');
+    if (sp) {
+      if (!root.classList.contains('splash-on')) sp.remove();
+      else {
+        var done = false;
+        var close = function () {
+          if (done) return;
+          done = true;
+          sp.classList.add('out');
+          root.classList.remove('splash-on');
+          try { sessionStorage.setItem('splashSeen', '1'); } catch (e) {}
+          setTimeout(function () { sp.remove(); }, 900);
+        };
+        sp.addEventListener('click', close);
+        setTimeout(close, 2900);
+      }
+    }
+
     var header = document.querySelector('header');
     var bar = document.createElement('div');
     bar.className = 'progress';
