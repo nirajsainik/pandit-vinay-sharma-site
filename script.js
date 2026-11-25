@@ -116,3 +116,15 @@
     }
   });
 })();
+
+/* Google Ads conversion: a lead = WhatsApp, phone or email contact */
+(function () {
+  var SEND_TO = 'AW-18556200367/hcXpCOKNs7QdEK_LpJBF';
+  window.trackLead = function () {
+    try { if (typeof gtag === 'function') gtag('event', 'conversion', { send_to: SEND_TO }); } catch (e) {}
+  };
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="tel:"], a[href*="wa.me/"], a[href^="mailto:"]');
+    if (a) window.trackLead();
+  }, true);
+})();

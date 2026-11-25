@@ -116,8 +116,8 @@
      +'\n\nTopic: '+v('topic')+'\nPreferred times: '+v('when')+'\nMessage: '+v('msg');
   }
   function ok(){ if(!f.checkValidity()){f.reportValidity();return false;} return true; }
-  f.addEventListener('submit',function(e){e.preventDefault();if(!ok())return;window.open('https://wa.me/919417253453?text='+encodeURIComponent(msg()),'_blank');});
-  document.getElementById('viaemail').addEventListener('click',function(){if(!ok())return;
+  f.addEventListener('submit',function(e){e.preventDefault();if(!ok())return;if(window.trackLead)trackLead();window.open('https://wa.me/919417253453?text='+encodeURIComponent(msg()),'_blank');});
+  document.getElementById('viaemail').addEventListener('click',function(){if(!ok())return;if(window.trackLead)trackLead();
     location.href='mailto:hello@panditvinaykumarsharma.com?subject='+encodeURIComponent('Consultation request: '+v('topic'))+'&body='+encodeURIComponent(msg());});
 })();
 </script>
